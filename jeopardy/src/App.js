@@ -3,10 +3,10 @@ import Questions from "./Questions";
 
 function App() {
   return (
-    <>
+    <div>
       <Header />
       <Questions />
-    </>
+    </div>
   );
 }
 
