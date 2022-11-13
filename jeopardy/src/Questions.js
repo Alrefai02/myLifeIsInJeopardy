@@ -1,12 +1,10 @@
 import cats from "./cats.js";
 import {useState} from "react";
 
-
-
 function Card(props) {
     return (
         <>
-            <div className="cardy-questions" onClick={props.handleClick} data-id={props.id}>
+            <div id={props.id} className="cardy-questions" onClick={props.handleClick}>
                 <h5 className="card-points">{props.points}</h5>
             </div>
         </>
@@ -29,11 +27,15 @@ function QuestionScreen(props) {
 export default function Questions() {
     const [viewQuestion, setViewQuestion] = useState(false);
     const [data, setData] = useState({question:'', answers:[]})
-
+    const allData = []
+    cats.map((cat) => cat.map((card) => allData.push(card)));
 
     function handleQuesClick(event) {
         setViewQuestion(true);
-        console.log(event.target.dataset);
+        const id = event.currentTarget.id;
+        const question = allData[id].question;
+        const answers = allData[id].answers;
+        setData({question: question, answers: answers});
     }    
     
     function handleBackClick() {
@@ -51,8 +53,10 @@ export default function Questions() {
 
 
     return (
-    <div className="ques-thingy">
-        {catMap}
+    <div className="questions">
+        <div className="ques-thingy">
+            {catMap}
+        </div>
         {viewQuestion && <QuestionScreen question={data.question} answers={data.answers} handleClick={handleBackClick}/>}
     </div>
     )

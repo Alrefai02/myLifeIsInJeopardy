@@ -57,3 +57,18 @@
   display: flex;
   justify-content: center;
 }
+
+.question-screen{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  /* background-color: #ffffff; */
+  display: table;
+  background: #2b5172;
+  padding: 1.5% 10%;
+  text-transform: uppercase;
+  border: #ffffff 1px solid;
+  text-align: center;
+}
