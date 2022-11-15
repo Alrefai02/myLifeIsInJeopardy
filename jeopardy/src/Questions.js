@@ -1,13 +1,28 @@
 import cats from "./cats.js";
-import {useState} from "react";
+import {useState ,useRef} from "react";
 
-function Card(props) {
+function Card(props) {   
+    let initStyle = "cardy-questions";
+    let clickedStyle = "cardy-questions-clicked";
+
+    const timesClicked = useRef(0)
+
+    if (timesClicked !== 0 && props.id-props.data.id === 0) {
+        initStyle = clickedStyle;
+    }
+
+    const nestedHandleClick = (e) => {
+        timesClicked.current++;
+        props.handleClick(e)
+    }
+    
+
     return (
-        <>
-            <div id={props.id} className="cardy-questions" onClick={props.handleClick}>
+        <div>
+            <div id={props.id} className= {initStyle}  onClick={e => {return nestedHandleClick(e)}}>
                 <h5 className="card-points">{props.points}</h5>
             </div>
-        </>
+        </div>
     );
 }
 
@@ -15,35 +30,33 @@ function QuestionScreen(props) {
     return (
         <div className="question-screen">
             <h5 className="question">{props.question}</h5>
-            <ol>
-                {props.answers.map((answer) => <li>{answer}</li>)} 
+            <ol className="answers">
+                {props.answers.map((answer) => <li type="a">{answer}</li>)} 
             </ol>
-            <button onClick={props.handleClick}>Back</button>
+            <button className="back-button" onClick={props.handleClick}>Back</button>
         </div>
     );
 }
 
 
 export default function Questions() {
-    const [viewQuestion, setViewQuestion] = useState(false);
-    const [data, setData] = useState({question:'', answers:[]})
+    const [data, setData] = useState({question: null, answers: null ,id: null})
     const allData = []
     cats.map((cat) => cat.map((card) => allData.push(card)));
 
     function handleQuesClick(event) {
-        setViewQuestion(true);
         const id = event.currentTarget.id;
-        const question = allData[id].question;
-        const answers = allData[id].answers;
-        setData({question: question, answers: answers});
+        const question = allData[id-1].question;
+        const answers = allData[id-1].answers;
+        setData({question: question, answers: answers ,id: id});
     }    
     
     function handleBackClick() {
-        setViewQuestion(false);
+        setData({question: null, answers: null ,id: null})
     }
 
     const catMap = cats.map((cat) => {
-        const cardMap = cat.map((card) => <Card points={card.points} id={card.id} handleClick={handleQuesClick}/>);
+        const cardMap = cat.map((card) => <Card points={card.points} id={card.id} handleClick={handleQuesClick} data={data}/>);
         return (
             <div className="ques">
                 {cardMap}
@@ -57,7 +70,7 @@ export default function Questions() {
         <div className="ques-thingy">
             {catMap}
         </div>
-        {viewQuestion && <QuestionScreen question={data.question} answers={data.answers} handleClick={handleBackClick}/>}
+        {data.id && <QuestionScreen question={data.question} answers={data.answers} handleClick={handleBackClick}/>}
     </div>
     )
 }
