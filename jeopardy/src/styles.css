@@ -97,3 +97,14 @@
   background-color: white;
   color: #2b5172;
 }
+
+.cardy-questions-clicked{
+  display: table;
+  width: 100%;
+  height: 75px;
+  background:  #057dcd;
+  padding: 1.5%;
+  text-transform: uppercase;
+  border:#ffffff 1px solid;
+  text-align: center;
+}

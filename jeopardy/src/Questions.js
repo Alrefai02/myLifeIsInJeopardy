@@ -7,7 +7,7 @@ function Card(props) {
 
     const timesClicked = useRef(0)
 
-    if (timesClicked !== 0 && props.id-props.data.id === 0) {
+    if (timesClicked.current !== 0 || props.id-props.data.id === 0) {
         initStyle = clickedStyle;
     }
 
