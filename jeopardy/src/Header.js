@@ -9,9 +9,9 @@ function Card(props) {
 }
 
 let cards = [
-    {title: "Card 1"},
-    {title: "Card 2"},
-    {title: "Card 3"}
+    {title: "Science"},
+    {title: "General Engineering"},
+    {title: "Puzzles"}
 ]
 
 const cardMap = cards.map((card) => <Card title={card.title} />);
