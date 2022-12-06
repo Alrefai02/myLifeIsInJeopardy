@@ -1,6 +1,6 @@
 let cat1 = [
     {points: "100", question: "Precision is...", answers: ["is a measure of how results are achieved in a periodic time", "is a measure of how closely individual measurements agree with the true value", "is a measure of how closely individual measurements agree with one another", "is a measure of how results achieve the wanted goal in the first given chance"], id:1},
-    {points: "200", question: "Find the derivative of the following equation", answers: ["Rome", "London", "Paris", "Berlin"], id:2},
+    {points: "200", question: "Find the derivative of the following equation", answers: ["0", "x^2", "1/x", "undefined"], id:2},
     {points: "300", question: "Given the quadratic equation y = x^2, shift it by 5 to the right and 3 up", answers: ["y = (x-5)^2+3 ", "y = (x+5)^2-3 ", "y = (x+3)^2+5 ", "y = (x-3)^2+5 "], id:3},
     {points: "400", question: "Glucose contains both:", answers: ["ester and acid groups.", "alcohol and aldehyde groups.", "ester and aldehyde groups.", "alcohol and acid groups."], id:4},
     {points: "500", question: "If the separation between two charged particles is cut to one third, the electric force between the two charged particles is:", answers: ["increased by a factor of 3", "cut to 1/3", "increased by a factor of 9", "cut to 1/9"], id:5}
