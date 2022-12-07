@@ -1,6 +1,7 @@
 import cats from "./cats.js";
 import {useState ,useRef} from "react";
 
+
 function Card(props) {   
     let initStyle = "cardy-questions";
     let clickedStyle = "cardy-questions-clicked";
@@ -30,6 +31,7 @@ function QuestionScreen(props) {
     return (
         <div className="question-screen">
             <h5 className="question">{props.question}</h5>
+            {props.id == 2 && <img src="../q2.png" className="question-img"/>}
             <ol className="answers">
                 {props.answers.map((answer) => <li type="a">{answer}</li>)} 
             </ol>
@@ -70,7 +72,7 @@ export default function Questions() {
         <div className="ques-thingy">
             {catMap}
         </div>
-        {data.id && <QuestionScreen question={data.question} answers={data.answers} handleClick={handleBackClick}/>}
+        {data.id && <QuestionScreen question={data.question} answers={data.answers} handleClick={handleBackClick} id={data.id}/>}
     </div>
     )
 }

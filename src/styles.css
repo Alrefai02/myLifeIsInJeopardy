@@ -110,3 +110,8 @@
   border:#ffffff 1px solid;
   text-align: center;
 }
+
+.question-img{
+  width: 50%;
+  object-fit: cover;
+}
